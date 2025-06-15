@@ -751,10 +751,10 @@ function animate() {
 
 
   
-  // Remove trail dots that have existed longer than 10 seconds
+  // Remove trail dots that have existed longer than 9 seconds
   const currentTime = clock.getElapsedTime();
   trailDots = trailDots.filter(dotObj => {
-    if (currentTime - dotObj.t0 > 10) {
+    if (currentTime - dotObj.t0 > 9) {
       scene.remove(dotObj.mesh);
       return false;
     }
