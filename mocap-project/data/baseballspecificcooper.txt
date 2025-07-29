@@ -1,0 +1,128 @@
+# Cooper Baseball Motion Capture Data - Baseball Specific Metadata
+# Supplementary information for baseball pitching motion analysis
+# Subject: Professional Baseball Pitcher
+# Date: 2024-01-15
+# Capture System: Vicon Motion Capture (84 markers)
+# Calibration: Standard baseball biomechanics protocol
+
+[MOTION_PHASES]
+# Frame ranges for different phases of pitching motion
+windup_start = 1
+windup_end = 150
+stride_start = 151
+stride_end = 300
+arm_cocking_start = 301
+arm_cocking_end = 450
+acceleration_start = 451
+acceleration_end = 600
+ball_release = 601
+follow_through_start = 602
+follow_through_end = 900
+
+[BALL_TRACKING]
+# Ball position and velocity data (if available)
+release_frame = 601
+release_velocity_mph = 92.5
+release_position_x = 0.456
+release_position_y = 1.875
+release_position_z = -0.123
+ball_spin_rpm = 2150
+
+[BIOMECHANICS_MARKERS]
+# Key biomechanical measurement points
+shoulder_separation_max_frame = 475
+hip_shoulder_separation_max_degrees = 45.2
+knee_lift_max_frame = 275
+knee_lift_max_height_cm = 125.8
+stride_length_cm = 185.4
+stride_foot_contact_frame = 300
+
+[JOINT_HIERARCHY_MAPPING]
+# Mapping of 84 joints to standard baseball biomechanics model
+# Root joints
+root_hips = joints_1_3
+pelvis = joints_1_3
+
+# Spine chain
+spine_lower = joints_4_6
+spine_middle = joints_7_9
+spine_upper = joints_10_12
+neck = joints_13_15
+head = joints_16_18
+
+# Left arm chain (glove hand)
+left_clavicle = joints_19_21
+left_shoulder = joints_22_24
+left_elbow = joints_25_27
+left_wrist = joints_28_30
+left_fingers = joints_31_45
+
+# Right arm chain (throwing hand)
+right_clavicle = joints_46_48
+right_shoulder = joints_49_51
+right_elbow = joints_52_54
+right_wrist = joints_55_57
+right_fingers = joints_58_72
+
+# Left leg chain (stride leg)
+left_hip = joints_73_75
+left_knee = joints_76_78
+left_ankle = joints_79_81
+left_foot = joints_82_84
+
+# Right leg chain (drive leg)
+right_hip = joints_85_87
+right_knee = joints_88_90
+right_ankle = joints_91_93
+right_foot = joints_94_96
+
+[COORDINATE_SYSTEM]
+# Original capture coordinate system
+up_axis = Y
+forward_axis = Z
+right_axis = X
+units = centimeters
+handedness = right_handed
+
+# Target coordinate system for BVH export
+target_up_axis = Z
+target_forward_axis = Y
+target_right_axis = X
+target_units = meters
+target_handedness = right_handed
+
+[MOTION_QUALITY]
+# Data quality indicators
+marker_dropout_percentage = 0.8
+reconstruction_error_mm = 1.2
+temporal_smoothing = applied
+gap_filling = cubic_spline
+filter_cutoff_hz = 12.0
+
+[PITCHER_METADATA]
+height_cm = 185
+weight_kg = 88
+throws = right
+experience_years = 8
+pitch_type = four_seam_fastball
+game_situation = practice
+
+[METAHUMAN_RETARGETING_NOTES]
+# Notes for future MetaHuman skeleton retargeting
+# Key considerations:
+# - Right arm is throwing arm (primary motion)
+# - Left arm follows through for balance
+# - Hip rotation drives power generation
+# - Spine flexibility critical for velocity
+# - Foot placement affects accuracy
+# - Head tracking maintains target focus
+
+[EXPORT_SETTINGS]
+# Recommended settings for BVH export
+frame_rate = 30
+root_joint = Hips
+position_channels = 6  # Root joint only
+rotation_channels = 3  # All other joints
+rotation_order = ZXY
+scale_factor = 0.01  # cm to meters
+coordinate_conversion = Y_up_to_Z_up
